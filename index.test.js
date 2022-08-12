@@ -136,19 +136,21 @@ describe('Cheese, Board and Users', () => {
         await softCheeseBoard.addCheese(mozzarella)
         await softCheeseBoard.addCheese(brie)
         await softCheeseBoard.addCheese(creamCheese)
-        //     await mixCheeseBoard.addCheese(mozzarella)
-        //     await mixCheeseBoard.addCheese() use through
-        //     await mixCheeseBoard.addCheese(brie)   {through: 'Board-cheese'}
+        await mixCheeseBoard.addCheese(mozzarella)
+        await mixCheeseBoard.addCheese(brie)
 
         const getHardCheeses = await hardCheeseBoard.getCheeses()
         const getSoftCheeses = await softCheeseBoard.getCheeses()
         const getMixCheeses = await mixCheeseBoard.getCheeses()
-        // console.log(getHardCheeses)
-        console.log(getSoftCheeses[2].description)
+
         expect(getHardCheeses[0].title).toEqual(parmesan.title)
         expect(getHardCheeses[1].title).toEqual(gruyère.title)
         expect(getSoftCheeses[0].title).toEqual(mozzarella.title)
         expect(getSoftCheeses[2].description).toEqual(creamCheese.description)
+        expect(getMixCheeses[0].title).toEqual(mozzarella.title)
+        expect(getMixCheeses[0].description).toEqual(mozzarella.description)
+        expect(getMixCheeses[1].description).toEqual(brie.description)
+        expect(getMixCheeses[1].title).toEqual(brie.title)
 
     })
 })
